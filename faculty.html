@@ -929,6 +929,7 @@ async function generateAbsenteeReportPDF(){
     "ME":  "MECHANICAL ENGINEERING",
     "CE":  "CIVIL ENGINEERING",
     "ADS": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE"
+    "FY" : "FIRST YEAR DEPARTMENT"
   };
   const deptFull = deptMap[dept] || (dept ? dept.toUpperCase() : "DEPARTMENT");
 
@@ -1035,7 +1036,7 @@ async function generateAbsenteeReportPDF(){
   doc.setFont("times","bold"); doc.setFontSize(11); doc.setTextColor(0);
   doc.text("Office of the Controller of Examinations",PW/2,y,{align:"center"}); y+=12;
   doc.setFont("times","normal"); doc.setFontSize(10);
-  doc.text("ODD Semester – "+acYear,PW/2,y,{align:"center"}); y+=8;
+  doc.text("EVEN Semester – "+acYear,PW/2,y,{align:"center"}); y+=8;
 
   // Double top border
   doc.setDrawColor(0); doc.setLineWidth(1.5); doc.line(ML,y,PW-MR,y); y+=2;
@@ -1330,6 +1331,7 @@ async function generateYearSummaryPDF(){
     "ME":"MECHANICAL ENGINEERING",
     "CE":"CIVIL ENGINEERING",
     "ADS":"ARTIFICIAL INTELLIGENCE AND DATA SCIENCE"
+    "FY" : "FIRST YEAR DEPARTMENT"
   };
   const deptFull = deptMap[dept] || (dept?dept.toUpperCase():"DEPARTMENT");
 
@@ -1363,7 +1365,7 @@ async function generateYearSummaryPDF(){
   doc.setFont("times","bold"); doc.setFontSize(11); doc.setTextColor(0);
   doc.text("Office of the Controller of Examinations", PW/2, y, {align:"center"}); y+=13;
   doc.setFont("times","normal"); doc.setFontSize(10);
-  doc.text("ODD Semester of " + acYear, PW/2, y, {align:"center"}); y+=10;
+  doc.text("EVEN Semester of " + acYear, PW/2, y, {align:"center"}); y+=10;
 
   doc.setDrawColor(0); doc.setLineWidth(1.2); doc.line(ML,y,PW-MR,y); y+=2;
   doc.setFillColor(0); doc.rect(ML,y,CW,20,"F");
@@ -1583,7 +1585,7 @@ async function generatePDF(data,examType,department){
     doc.setFont("times","bold"); doc.setFontSize(12);
     const ct=(txt,yPos)=>doc.text(txt,pageWidth/2,yPos,{align:"center"});
     ct("Office of the Controller of Examinations",y); y+=18;
-    ct("ODD Semester of 2025 – 2026",y); y+=18;
+    ct("EVEN Semester of 2025 – 2026",y); y+=18;
     ct("HALL WISE SEATING ARRANGEMENT",y); y+=18;
     ct(`DEPARTMENT OF ${departmentFullName}`,y); y+=18;
     ct(`INTERNAL EXAMINATION – ${examType}`,y); y+=25;
@@ -1679,7 +1681,7 @@ async function generateHallPlanSchedule(){
       if(imgData){ doc.addImage(imgData,"JPEG",(pageWidth-250)/2,yH,250,50); yH+=80; }
       doc.setFont("times","bold"); doc.setFontSize(14);
       doc.text("Office of the Controller of Examinations",pageWidth/2,90,{align:"center"});
-      doc.text("ODD Semester of 2025 – 2026",pageWidth/2,110,{align:"center"});
+      doc.text("EVEN Semester of 2025 – 2026",pageWidth/2,110,{align:"center"});
       doc.text("Hall Plan Schedule",pageWidth/2,130,{align:"center"});
       doc.setFont("times","normal"); doc.setFontSize(12);
       doc.text(`DEPARTMENT OF ${departmentFullName}`,pageWidth/2,150,{align:"center"});

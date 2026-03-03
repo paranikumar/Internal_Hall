@@ -848,7 +848,7 @@ function drawCollegeHeader(doc, logo, PW, ML, MR, examType, deptFull, acYear, di
 
   doc.setFont("times","normal");
   doc.setFontSize(10);
-  doc.text("ODD Semester of " + acYear, PW/2, y, {align:"center"});
+  doc.text("EVEN Semester of " + acYear, PW/2, y, {align:"center"});
   y += 10;
 
   // Solid top border line
@@ -928,8 +928,8 @@ async function generateAbsenteeReportPDF(){
     "ECE": "ELECTRONICS AND COMMUNICATION ENGINEERING",
     "ME":  "MECHANICAL ENGINEERING",
     "CE":  "CIVIL ENGINEERING",
-    "ADS": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE"
-    "FY" : "FIRST YEAR DEPARTMENT"
+    "ADS": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE",
+    "FY":"FIRST YEAR DEPARTMENT",
   };
   const deptFull = deptMap[dept] || (dept ? dept.toUpperCase() : "DEPARTMENT");
 
@@ -1330,8 +1330,8 @@ async function generateYearSummaryPDF(){
     "ECE":"ELECTRONICS AND COMMUNICATION ENGINEERING",
     "ME":"MECHANICAL ENGINEERING",
     "CE":"CIVIL ENGINEERING",
-    "ADS":"ARTIFICIAL INTELLIGENCE AND DATA SCIENCE"
-    "FY" : "FIRST YEAR DEPARTMENT"
+    "ADS":"ARTIFICIAL INTELLIGENCE AND DATA SCIENCE",
+    "FY":"FIRST YEAR DEPARTMENT",
   };
   const deptFull = deptMap[dept] || (dept?dept.toUpperCase():"DEPARTMENT");
 
@@ -1550,7 +1550,7 @@ async function downloadHallPlan(){
 
 async function generatePDF(data,examType,department){
   if(!Array.isArray(data)||data.length===0){ alert("No data to generate PDF."); return; }
-  const deptMap={"CSE":"COMPUTER SCIENCE AND ENGINEERING","ECE":"ELECTRONICS AND COMMUNICATION ENGINEERING","ME":"MECHANICAL ENGINEERING","CE":"CIVIL ENGINEERING","ADS":"ARTIFICIAL INTELLIGENCE AND DATA SCIENCE"};
+  const deptMap={"CSE":"COMPUTER SCIENCE AND ENGINEERING","ECE":"ELECTRONICS AND COMMUNICATION ENGINEERING","ME":"MECHANICAL ENGINEERING","CE":"CIVIL ENGINEERING","ADS":"ARTIFICIAL INTELLIGENCE AND DATA SCIENCE","FY":"FIRST YEAR DEPARTMENT",};
   const departmentFullName=department&&deptMap[department]?deptMap[department]:(department?department.toUpperCase():"UNKNOWN DEPARTMENT");
   const {jsPDF}=window.jspdf;
   const doc=new jsPDF("landscape","pt","a4");
@@ -1667,7 +1667,7 @@ async function generateHallPlanSchedule(){
     const doc=new jsPDF("portrait","pt","a4");
     const pageWidth=doc.internal.pageSize.getWidth();
     const pageHeight=doc.internal.pageSize.getHeight();
-    const departmentFullName={"CSE":"COMPUTER SCIENCE AND ENGINEERING","ECE":"ELECTRONICS AND COMMUNICATION ENGINEERING","ME":"MECHANICAL ENGINEERING","CE":"CIVIL ENGINEERING","ADS":"ARTIFICIAL INTELLIGENCE AND DATA SCIENCE"}[u.department]||u.department;
+    const departmentFullName={"CSE":"COMPUTER SCIENCE AND ENGINEERING","ECE":"ELECTRONICS AND COMMUNICATION ENGINEERING","ME":"MECHANICAL ENGINEERING","CE":"CIVIL ENGINEERING","ADS":"ARTIFICIAL INTELLIGENCE AND DATA SCIENCE","FY":"FIRST YEAR DEPARTMENT"}[u.department]||u.department;
     let imgData=null;
     try {
       const resp=await fetch("logo.jpeg");

@@ -348,7 +348,7 @@ async function downloadPDF(){
     doc.setFont("times","bold"); doc.setFontSize(12); doc.setTextColor(0);
     doc.text("Office of the Controller of Examinations",PW/2,y,{align:"center"}); y+=13;
     doc.setFont("times","normal"); doc.setFontSize(10);
-    doc.text("ODD Semester – Academic Year 2025–2026",PW/2,y,{align:"center"}); y+=8;
+    doc.text("EVEN Semester – Academic Year 2025–2026",PW/2,y,{align:"center"}); y+=8;
 
     /* Double top border */
     doc.setDrawColor(0); doc.setLineWidth(1.5); doc.line(ML,y,PW-MR,y); y+=2;
@@ -373,7 +373,7 @@ async function downloadPDF(){
 
     const infoRows=[
       ["Examination Date",   displayDate||"All Dates",   "Session / Batch",  batchVal||"All"],
-      ["Filter Applied",     filterLabel,                "Academic Year",    "ODD Sem – 2025–2026"],
+      ["Filter Applied",     filterLabel,                "Academic Year",    "EVEN Sem – 2025–2026"],
       ["Total Records",      String(lastReport.length),  "Absent / On Duty", absentCount+" Absent  |  "+odCount+" On Duty"],
     ];
 
@@ -580,9 +580,9 @@ async function downloadPDF(){
   doc.setLineWidth(0.4);                       doc.line(ML,y,PW-MR,y); y+=10;
 
   const sigs=[
-    {label:"Prepared By",                x:ML},
-    {label:"Controller of Examinations", x:PW/2-70},
-    {label:"Head of Institution",        x:PW-MR-140},
+    {label:"ADCoE",                x:ML},
+    /*{label:"Controller of Examinations", x:PW/2-70},*/
+    {label:"Controller of Examinations",        x:PW-MR-140},
   ];
   const sigY=y+28;
   sigs.forEach(s=>{
@@ -607,3 +607,4 @@ function logout(){localStorage.removeItem("user");location.href="index.html";}
 </script>
 </body>
 </html>
+

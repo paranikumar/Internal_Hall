@@ -817,19 +817,6 @@
           let upcomingCount = res.stats.upcomingCount || 0;
           let completedCount = res.stats.completedCount || 0;
 
-          const fnEnd = 12 * 60;  // 12:00 PM
-      const anEnd = 17 * 60;  // 5:00 PM
-
-      // If FN exam exists but backend already moved it
-      if (currentTime < fnEnd && todayCount === 0 && res.stats.fnExam === true) {
-        todayCount = 1;
-        completedCount = Math.max(0, completedCount - 1);
-      }
-
-      // If AN exam still running
-      if (currentTime >= fnEnd && currentTime < anEnd && res.stats.anExam === true) {
-        todayCount = 1;
-      }
           
           // FN exams move to completed after 12 PM (noon)
           // AN exams move to completed after 5 PM (17:00)
@@ -1193,6 +1180,7 @@
   </script>
 </body>
 </html>
+
 
 
 
